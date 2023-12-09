@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all instructions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new instruction
+    </h2>
+
+    <form action="/insert_instruction" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="explanation_box">
+          Explanation
+        </label>
+
+        <textarea id="explanation_box" name="query_explanation" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create instruction
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Explanation
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_instructions.each do |an_instruction| %>
+      <tr>
+        <td>
+          <%= an_instruction.id %>
+        </td>
+
+        <td>
+          <%= an_instruction.title %>
+        </td>
+
+        <td>
+          <%= an_instruction.explanation %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_instruction.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_instruction.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/instructions/<%= an_instruction.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

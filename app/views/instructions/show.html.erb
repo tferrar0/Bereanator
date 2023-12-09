@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Instruction #<%= @the_instruction.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/instructions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_instruction/<%= @the_instruction.id %>">
+          Delete instruction
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_instruction.title %>
+      </dd>
+
+      <dt>
+        Explanation
+      </dt>
+      <dd>
+        <%= @the_instruction.explanation %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_instruction.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_instruction.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit instruction
+    </h2>
+
+    <form action="/modify_instruction/<%= @the_instruction.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_instruction.title %>">
+      </div>
+
+      <div>
+        <label for="explanation_box">
+          Explanation
+        </label>
+
+        <textarea id="explanation_box" name="query_explanation"><%= @the_instruction.explanation %></textarea>
+      </div>
+
+      <button>
+        Update instruction
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

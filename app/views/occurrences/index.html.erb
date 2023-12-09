@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all occurrences
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new occurrence
+    </h2>
+
+    <form action="/insert_occurrence" method="post">
+      <div>
+        <label for="instruction_id_box">
+          Instruction
+        </label>
+
+        <input type="text" id="instruction_id_box" name="query_instruction_id">
+      </div>
+
+      <div>
+        <label for="text_box">
+          Text
+        </label>
+
+        <textarea id="text_box" name="query_text" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="book_id_box">
+          Book
+        </label>
+
+        <input type="text" id="book_id_box" name="query_book_id">
+      </div>
+
+      <div>
+        <label for="chapter_box">
+          Chapter
+        </label>
+
+        <input type="text" id="chapter_box" name="query_chapter">
+      </div>
+
+      <div>
+        <label for="verse_box">
+          Verse
+        </label>
+
+        <input type="text" id="verse_box" name="query_verse">
+      </div>
+
+      <button>
+        Create occurrence
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Instruction
+        </th>
+
+        <th>
+          Text
+        </th>
+
+        <th>
+          Book
+        </th>
+
+        <th>
+          Chapter
+        </th>
+
+        <th>
+          Verse
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_occurrences.each do |an_occurrence| %>
+      <tr>
+        <td>
+          <%= an_occurrence.id %>
+        </td>
+
+        <td>
+          <%= an_occurrence.instruction_id %>
+        </td>
+
+        <td>
+          <%= an_occurrence.text %>
+        </td>
+
+        <td>
+          <%= an_occurrence.book_id %>
+        </td>
+
+        <td>
+          <%= an_occurrence.chapter %>
+        </td>
+
+        <td>
+          <%= an_occurrence.verse %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_occurrence.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_occurrence.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/occurrences/<%= an_occurrence.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
