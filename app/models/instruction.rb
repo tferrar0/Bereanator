@@ -9,4 +9,5 @@
 #  updated_at  :datetime         not null
 #
 class Instruction < ApplicationRecord
+  has_many  :occurrences, class_name: "Occurrence", foreign_key: "instruction_id", dependent: :destroy
 end

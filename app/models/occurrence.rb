@@ -12,4 +12,6 @@
 #  instruction_id :integer
 #
 class Occurrence < ApplicationRecord
+  belongs_to :instruction, required: true, class_name: "Instruction", foreign_key: "instruction_id"
+  belongs_to :book, required: true, class_name: "Book", foreign_key: "book_id"
 end
